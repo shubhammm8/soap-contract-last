@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DaoImplService WSDL service -->
+
+  <service name="DaoImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://kalinga.in"/>
+      <parameter name="wsdlServiceElement" value="DaoImplService"/>
+      <parameter name="schemaQualified" value="http://kalinga.in"/>
+      <parameter name="wsdlServicePort" value="DaoImpl"/>
+      <parameter name="className" value="in.kalinga.DaoImpl"/>
+      <parameter name="wsdlPortType" value="DaoImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://kalinga.in" xmlns:retNS="http://kalinga.in" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insert" qname="operNS:insert" returnQName="retNS:insertReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://kalinga.in" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fs" type="tns:string"/>
+        <parameter xmlns:pns="http://kalinga.in" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pos" type="tns:string"/>
+        <parameter xmlns:pns="http://kalinga.in" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pn" type="tns:string"/>
+        <parameter xmlns:pns="http://kalinga.in" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:tid" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://kalinga.in" xmlns:retNS="http://kalinga.in" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPlayers" qname="operNS:getPlayers" returnQName="retNS:getPlayersReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="insert getPlayers"/>
+
+  </service>
+</deployment>
